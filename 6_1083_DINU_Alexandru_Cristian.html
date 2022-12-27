@@ -1,12 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="6_1083_DINU_Alexandru_Cristian.css">
+
     <title>Editor SVG</title>
 </head>
+
 <body>
-    <h1>Proiect editare SVG</h1>
+    <h1 id="title">SVG Editor</h1>
+
+    <div class="buttons">
+        <label id="textPick">Pick one of the following elements: </label>
+        <button id="line" onclick="drawLine()">Line</button>
+        <button id="ellipse" onclick="drawEllipse()">Ellipse</button>
+        <button id="rect" onclick="drawRect()">Rectangle</button>
+    </div>
+
+    <div class="colorPicker">
+        <label>Choose your colour: </label>
+        <input type="color" id="color-picker">
+    </div>
+
+    <svg id="editSVG">
+        <svg id="drawings">
+            <line id="selectLine" style="display: none;"></line>
+            <ellipse id="selectEllipse" style="display: none;"></ellipse>
+            <rect id="selectRect" style="display:none;"></rect>
+        </svg>
+    </svg>
+
+    
+
+    <script src="6_1083_DINU_Alexandru_Cristian.js"></script>
+
 </body>
+
 </html>
