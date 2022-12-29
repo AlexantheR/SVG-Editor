@@ -32,9 +32,9 @@ svg {
 }
 
 svg line,ellipse,rect {
-    fill: black;
+    /* fill: white; */
     fill-opacity: 1;
-    stroke: black;
+    /* stroke: black; */
     stroke-opacity: 1;
 }
 
@@ -46,10 +46,12 @@ svg #selectLine, #selectEllipse, #selectRect {
 }
 
 svg .selected{
-    fill:rgb(62, 62, 208);
+    /* fill:rgb(62, 62, 208); */
+    fill-opacity: 0.8;
 }
 
-#color-picker{
+#color-picker, #color-stroke{
     display: block;
     margin-bottom: 5px;
 }
+

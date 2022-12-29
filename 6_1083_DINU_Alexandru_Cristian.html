@@ -13,24 +13,37 @@
 <body>
     <h1 id="title">SVG Editor</h1>
 
+    <div class="colorPickers">
+        <label>Choose background color: </label>
+        <input type="color" id="color-picker">
+        <label>Choose stroke color: </label>
+        <input type="color" id="color-stroke">
+    </div>
+           
+    <!-- butoane pentru alegerea optiunilor de catre utilizator -->
     <div class="buttons">
         <label id="textPick">Pick one of the following elements: </label>
         <button id="line" onclick="drawLine()">Line</button>
         <button id="ellipse" onclick="drawEllipse()">Ellipse</button>
         <button id="rect" onclick="drawRect()">Rectangle</button>
-    </div>
+        <button id="move">Move object</button>
+        <button id="unselect">Stop selection</button>   
+        <button id="stopClick">Stop click</button>        
+    </div>   
 
-    <div class="colorPicker">
-        <label>Choose your colour: </label>
-        <input type="color" id="color-picker">
+    <div class="buttonOptions">
+        <button id="savePNG">Save as PNG</button>
+        <button id="saveJPEG">Save as JPEG</button>     
+        <!-- <button id="help">Help with interactions</button>       -->
     </div>
 
     <svg id="editSVG">
-        <svg id="drawings">
+        <svg id="drawings"> </svg>
+
+            <!-- selectia formelor geometrice -->
             <line id="selectLine" style="display: none;"></line>
             <ellipse id="selectEllipse" style="display: none;"></ellipse>
             <rect id="selectRect" style="display:none;"></rect>
-        </svg>
     </svg>
 
     
