@@ -55,6 +55,9 @@ editor.addEventListener("mousedown", function (e) {
             selectLine.style.display = "block";
             const colorStroke = document.getElementById("color-stroke").value;
             selectLine.style.stroke = colorStroke;
+
+            const strokeWidth = document.getElementById("stroke-width").value;
+            selectLine.style.strokeWidth = strokeWidth;
         }
 
         if (drawing == "ellipse") {
@@ -64,6 +67,9 @@ editor.addEventListener("mousedown", function (e) {
             selectEllipse.style.fill = color;
             const colorStroke = document.getElementById("color-stroke").value;
             selectEllipse.style.stroke = colorStroke;
+
+            const strokeWidth = document.getElementById("stroke-width").value;
+            selectEllipse.style.strokeWidth = strokeWidth;
         }
 
         if (drawing == "rect") {
@@ -73,6 +79,9 @@ editor.addEventListener("mousedown", function (e) {
             selectRect.style.fill = color;
             const colorStroke = document.getElementById("color-stroke").value;
             selectRect.style.stroke = colorStroke;
+
+            const strokeWidth = document.getElementById("stroke-width").value;
+            selectRect.style.strokeWidth = strokeWidth;
         }
     }
 })
@@ -135,6 +144,9 @@ editor.addEventListener("mouseup", function (e) {
 
             const colorStroke = document.getElementById("color-stroke").value;
             newElement.setAttribute("stroke", colorStroke);
+
+            const strokeWidth = document.getElementById("stroke-width").value;
+            newElement.style.strokeWidth = strokeWidth;
         }
 
         if (drawing == "ellipse") {
@@ -145,6 +157,9 @@ editor.addEventListener("mouseup", function (e) {
             newElement.setAttribute("fill", color);
             const colorStroke = document.getElementById("color-stroke").value;
             newElement.setAttribute("stroke", colorStroke);
+
+            const strokeWidth = document.getElementById("stroke-width").value;
+            newElement.style.strokeWidth = strokeWidth;
         }
 
         if (drawing == "rect") {
@@ -155,6 +170,9 @@ editor.addEventListener("mouseup", function (e) {
             newElement.setAttribute("fill", color);
             const colorStroke = document.getElementById("color-stroke").value;
             newElement.setAttribute("stroke", colorStroke);
+
+            const strokeWidth = document.getElementById("stroke-width").value;
+            newElement.style.strokeWidth = strokeWidth;
         }
 
         newElement.onmousedown = function (e) {
@@ -167,9 +185,12 @@ editor.addEventListener("mouseup", function (e) {
                 selectedElement = e.target;
 
                 const color = document.getElementById("color-picker").value;
-                selectedElement.setAttribute("fill",color);
-                const colorStroke = document.getElementById("color-stroke").value;              
-                selectedElement.setAttribute("stroke",colorStroke);
+                selectedElement.setAttribute("fill", color);
+                const colorStroke = document.getElementById("color-stroke").value;
+                selectedElement.setAttribute("stroke", colorStroke);
+
+                const strokeWidth = document.getElementById("stroke-width").value;
+                newElement.style.strokeWidth = strokeWidth;
             }
         }
         elements.appendChild(newElement);
@@ -185,4 +206,60 @@ document.onkeydown = function (e) {
         selectedElement.remove();
     }
 }
+
+
+//SALVARE IMAGINE PNG
+document.getElementById("savePNG").onclick = function (e) {
+
+    //Luam svg-ul drept string
+    const svgElement = new XMLSerializer().serializeToString(editor);
+
+    //Convertim svg string-ul in data url
+    const svgURL = 'data:image/svg+xml;base64,' + btoa(svgElement);
+
+    //Cream un element nou de tip image
+    const img = new Image();
+    img.src = svgURL;   //Sursa imaginii este url-ul svg-ului
+
+    img.onload = () => {
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        context.drawImage(img, 0, 0);
+        //url-ul canvasului
+        const pngData = canvas.toDataURL('image/png');
+
+        //link temporar
+        const link = document.createElement('a');
+        //numele pozei salvate/descarcate
+        link.download = 'pngImage.png';
+
+        //setam href cu data pt png
+        link.href = pngData;
+
+        //click pt descarcare
+        link.click();
+    };
+};
+
+//SALVARE IMAGINE SVG
+document.getElementById("saveSVG").onclick = function (e) {
+
+    //Luam svg-ul drept string
+    const svgElement = new XMLSerializer().serializeToString(editor);
+
+    //link temporar
+    const link = document.createElement('a');
+
+    //numele pozei salvate/descarcate
+    link.download = 'svgImage.svg';
+
+    //setam href cu data pt svg
+    link.href = 'data:image/svg+xml;base64,' + btoa(svgElement);
+    link.click();
+};
+
+
 

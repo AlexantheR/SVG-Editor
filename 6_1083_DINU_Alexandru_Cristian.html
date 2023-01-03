@@ -14,12 +14,17 @@
     <h1 id="title">SVG Editor</h1>
 
     <div class="colorPickers">
-        <label>Choose background color: </label>
+        <label>Background color: </label>
         <input type="color" id="color-picker">
-        <label>Choose stroke color: </label>
+        <label>Stroke color: </label>
         <input type="color" id="color-stroke">
     </div>
-           
+    
+    <div class="strokeWidth">
+        <label>Stroke width:</label>
+        <input type="number" id="stroke-width" min="0" value="2">
+    </div>
+
     <!-- butoane pentru alegerea optiunilor de catre utilizator -->
     <div class="buttons">
         <label id="textPick">Pick one of the following elements: </label>
@@ -33,11 +38,11 @@
 
     <div class="buttonOptions">
         <button id="savePNG">Save as PNG</button>
-        <button id="saveJPEG">Save as JPEG</button>     
+        <button id="saveSVG">Save as SVG</button>     
         <!-- <button id="help">Help with interactions</button>       -->
     </div>
 
-    <svg id="editSVG">
+    <svg id="editSVG" width="500" height="500" xmlns="http://www.w3.org/2000/svg">
         <svg id="drawings"> </svg>
 
             <!-- selectia formelor geometrice -->
@@ -45,8 +50,6 @@
             <ellipse id="selectEllipse" style="display: none;"></ellipse>
             <rect id="selectRect" style="display:none;"></rect>
     </svg>
-
-    
 
     <script src="6_1083_DINU_Alexandru_Cristian.js"></script>
 
