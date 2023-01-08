@@ -29,7 +29,6 @@ var selectLine = document.getElementById("selectLine");
 var selectEllipse = document.getElementById("selectEllipse");
 var selectRect = document.getElementById("selectRect");
 var elements = document.getElementById("drawings");
-var movement = document.getElementById("move");
 var unselected = document.getElementById("unselect");
 var stopClick = document.getElementById("stopClick");
 
