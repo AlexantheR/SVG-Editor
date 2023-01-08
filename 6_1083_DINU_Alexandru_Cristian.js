@@ -53,9 +53,11 @@ editor.addEventListener("mousedown", function (e) {
         if (drawing == "line") {
             setLineCoordinnates(selectLine, x1, y1, x1, y1);
             selectLine.style.display = "block";
+            //aplicam culoarea pentru stroke
             const colorStroke = document.getElementById("color-stroke").value;
             selectLine.style.stroke = colorStroke;
 
+            //aplicam grosimea pt stroke
             const strokeWidth = document.getElementById("stroke-width").value;
             selectLine.style.strokeWidth = strokeWidth;
         }
@@ -63,11 +65,16 @@ editor.addEventListener("mousedown", function (e) {
         if (drawing == "ellipse") {
             setEllipseCoordinates(selectEllipse, x1, y1, x1, y1);
             selectEllipse.style.display = "block";
+
+            //aplicam culoarea pentru fundal
             const color = document.getElementById("color-picker").value;
             selectEllipse.style.fill = color;
+
+            //aplicam culoarea pentru stroke
             const colorStroke = document.getElementById("color-stroke").value;
             selectEllipse.style.stroke = colorStroke;
 
+            //aplicam grosimea pt stroke
             const strokeWidth = document.getElementById("stroke-width").value;
             selectEllipse.style.strokeWidth = strokeWidth;
         }
@@ -189,6 +196,7 @@ editor.addEventListener("mouseup", function (e) {
 
                 selectedElement = e.target;
 
+                //suport pt modificare culoare si grosime pt elementul selectat
                 const color = document.getElementById("color-picker").value;
                 selectedElement.setAttribute("fill", color);
                 const colorStroke = document.getElementById("color-stroke").value;
@@ -225,7 +233,7 @@ stopClick.addEventListener("click", function (e) {
         drawing = "";
     }
     else {
-        alert("No object selected!");
+        alert("No drawing clicked!");
     }
 })
 
@@ -241,8 +249,8 @@ document.onkeydown = function (e) {
 }
 
 //DELETE ALL ELEMENTS
-document.onkeydown = function (e){
-    if(e.keyCode == resetKey){
+document.onkeydown = function (e) {
+    if (e.keyCode == resetKey) {
         var drawings = document.getElementById('drawings');
         drawings.innerHTML = '';
     }
@@ -300,27 +308,3 @@ document.getElementById("saveSVG").onclick = function (e) {
     link.href = 'data:image/svg+xml;base64,' + btoa(svgElement);
     link.click();
 };
-
-//UNDO  NU MERGE !!!!!
-// document.getElementById("undo").onclick = function(){
-//     const data = {value:0};
-//     const undoActions = [];     //vector pt actiuni undo
-
-//     function updateData(newVal) {
-//         undoActions.push(()=> {
-//             data.value = oldVal;
-//         });
-//         const oldVal = data.value;
-//         data.value = newVal;
-//     }
-
-//     function undo() {
-//         if(undoActions.length > 0){
-//             const action = undoActions.pop();
-//             action();
-//         }
-//     }
-
-//     updateData(1);
-//     undo();
-// }
