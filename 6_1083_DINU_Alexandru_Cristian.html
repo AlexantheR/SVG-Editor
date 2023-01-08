@@ -12,44 +12,55 @@
 
 <body>
     <h1 id="title">SVG Editor</h1>
+    <div class="grid">
+        <div class="allOptions">
+            <!-- butoane pentru alegerea optiunilor de catre utilizator -->
+            <div class="buttons">
+                <li><label id="textPick">Pick one of the following elements:</label></li>
+                <button id="line" onclick="drawLine()">Line</button>
+                <button id="ellipse" onclick="drawEllipse()">Ellipse</button>
+                <button id="rect" onclick="drawRect()">Rectangle</button>
+            </div>
 
-    <div class="colorPickers">
-        <label>Background color: </label>
-        <input type="color" id="color-picker">
-        <label>Stroke color: </label>
-        <input type="color" id="color-stroke">
+            <div class="colorPickers">
+                <li><label>Background color: </label></li>
+                <input type="color" id="color-picker">
+                <li><label>Stroke color: </label></li>
+                <input type="color" id="color-stroke">
+            </div>
+
+            <div class="strokeWidth">
+                <li><label>Stroke width:</label></li>
+                <input type="number" id="stroke-width" min="0" value="2">
+            </div>
+
+            <div class="buttonOptions">
+                <li><label>You have the following options:</label></li>
+                <button id="unselect">Stop selection</button>
+                <button id="stopClick">Stop click</button>
+            </div>
+
+            <div class="buttonSave">
+                <li><label>Save the drawing:</label></li>
+                <button id="savePNG">Save as PNG</button>
+                <button id="saveSVG">Save as SVG</button>
+            </div>
+
+            <li>To delete selected object: Right mouse on object + key DEL</li>
+            <li>To clean the canvas: key R</li>
+        </div>
+
+        <div class="editorSVG">
+            <svg id="editSVG" xmlns="http://www.w3.org/2000/svg">
+                <svg id="drawings"> </svg>
+
+                <!-- selectia formelor geometrice -->
+                <line id="selectLine" style="display: none;"></line>
+                <ellipse id="selectEllipse" style="display: none;"></ellipse>
+                <rect id="selectRect" style="display:none;"></rect>
+            </svg>
+        </div>
     </div>
-    
-    <div class="strokeWidth">
-        <label>Stroke width:</label>
-        <input type="number" id="stroke-width" min="0" value="2">
-    </div>
-
-    <!-- butoane pentru alegerea optiunilor de catre utilizator -->
-    <div class="buttons">
-        <label id="textPick">Pick one of the following elements: </label>
-        <button id="line" onclick="drawLine()">Line</button>
-        <button id="ellipse" onclick="drawEllipse()">Ellipse</button>
-        <button id="rect" onclick="drawRect()">Rectangle</button>
-        <button id="move">Move object</button>
-        <button id="unselect">Stop selection</button>   
-        <button id="stopClick">Stop click</button>        
-    </div>   
-
-    <div class="buttonOptions">
-        <button id="savePNG">Save as PNG</button>
-        <button id="saveSVG">Save as SVG</button>     
-        <!-- <button id="help">Help with interactions</button>       -->
-    </div>
-
-    <svg id="editSVG" width="500" height="500" xmlns="http://www.w3.org/2000/svg">
-        <svg id="drawings"> </svg>
-
-            <!-- selectia formelor geometrice -->
-            <line id="selectLine" style="display: none;"></line>
-            <ellipse id="selectEllipse" style="display: none;"></ellipse>
-            <rect id="selectRect" style="display:none;"></rect>
-    </svg>
 
     <script src="6_1083_DINU_Alexandru_Cristian.js"></script>
 

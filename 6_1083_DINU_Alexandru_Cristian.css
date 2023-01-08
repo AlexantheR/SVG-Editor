@@ -5,51 +5,110 @@ body {
     margin: 0px;
     padding: 0px;
     background-color: rgb(255, 242, 217);
+    font-family: cursive;
 }
 
-#textPick{
-    display: block;
+.grid {
+    display: grid;
+    grid-template-columns: auto auto;
 }
 
 #title {
     text-align: center;
     margin-top: 0px;
-    margin-bottom: 0px;
+    margin-bottom: 50px;
 }
 
 .buttons {
-    margin-bottom: 10px;
-    margin-left: 5px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.strokeWidth {
+    margin-bottom: 5px;
+}
+
+.buttonOptions {
+    margin-bottom: 5px;
+}
+
+#line:focus {
+    transform: scale(0.98);
+    /* Scaling button to 0.98 to its original size */
+    box-shadow: 3px 2px 22px 1px rgb(0, 0, 0);
+    /* Lowering the shadow */
+}
+
+#ellipse:focus {
+    transform: scale(0.98);
+    /* Scaling button to 0.98 to its original size */
+    box-shadow: 3px 2px 22px 1px rgb(0, 0, 0);
+    /* Lowering the shadow */
+}
+
+#rect:focus {
+    transform: scale(0.98);
+    /* Scaling button to 0.98 to its original size */
+    box-shadow: 3px 2px 22px 1px rgb(0, 0, 0);
+    /* Lowering the shadow */
 }
 
 svg {
-    margin: 0px;
-    padding: 0px;
+    /* margin: 0px;
+    padding: 0px; */
     background-color: #F5DEB3;
     cursor: crosshair;
 }
 
-svg line,ellipse,rect {
+svg line,
+ellipse,
+rect {
     /* fill: white; */
     fill-opacity: 1;
     /* stroke: black; */
     stroke-opacity: 1;
 }
 
-svg #selectLine, #selectEllipse, #selectRect {
+svg #selectLine,
+#selectEllipse,
+#selectRect {
     fill: transparent;
     stroke: aqua;
     stroke-opacity: 0.6;
     stroke-dasharray: 3, 3;
 }
 
-svg .selected{
+svg .selected {
     /* fill:rgb(62, 62, 208); */
     fill-opacity: 0.8;
 }
 
-#color-picker, #color-stroke{
+#color-picker,
+#color-stroke,
+#stroke-width {
     display: block;
+    margin-bottom: 5px;
+    width: 150px;
+}
+
+.buttonSave {
     margin-bottom: 5px;
 }
 
+.editorSVG {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#editSVG {
+    display: block;
+    width: 55vw;
+    height: 50vh;
+}
+
+.allOptions {
+    margin-left: 10px;
+}
