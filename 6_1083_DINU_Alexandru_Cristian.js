@@ -152,39 +152,6 @@ editor.addEventListener("mouseup", function (e) {
 
             const strokeWidth = document.getElementById("stroke-width").value;
             newElement.style.strokeWidth = strokeWidth;
-
-            //DRAG AND DROP 
-            newElement.onmousedown = function (event) {
-                // (1) prepare to moving: make absolute and on top by z-index
-                newElement.style.position = 'absolute'
-                newElement.style.zIndex = 1000
-
-                // move it out of any current parents directly into body
-                // to make it positioned relative to the body
-                document.editor.append(newElement)
-
-                // centers the ball at (pageX, pageY) coordinates
-                function moveAt(pageX, pageY) {
-                    newElement.style.left = pageX - newElement.offsetWidth / 2 + 'px'
-                    newElement.style.top = pageY - newElement.offsetHeight / 2 + 'px'
-                }
-
-                // move our absolutely positioned ball under the pointer
-                moveAt(event.pageX, event.pageY)
-
-                function onMouseMove(event) {
-                    moveAt(event.pageX, event.pageY)
-                }
-
-                // (2) move the ball on mousemove
-                document.addEventListener('mousemove', onMouseMove)
-
-                // (3) drop the ball, remove unneeded handlers
-                newElement.onmouseup = function () {
-                    document.removeEventListener('mousemove', onMouseMove)
-                    newElement.onmouseup = null
-                }
-            }
         }
 
         newElement.onmousedown = function (e) {
@@ -241,20 +208,20 @@ editor.oncontextmenu = function () {
     return false;
 }
 
-//DELETE SELECTED ELEMENT
+
 document.onkeydown = function (e) {
+    //DELETE SELECTED ELEMENT
     if (e.keyCode == deleteKey && selectedElement) {
         selectedElement.remove();
     }
-}
-
-//DELETE ALL ELEMENTS
-document.onkeydown = function (e) {
+    //DELETE ALL ELEMENTS
     if (e.keyCode == resetKey) {
         var drawings = document.getElementById('drawings');
         drawings.innerHTML = '';
     }
 }
+
+
 
 //SALVARE IMAGINE PNG
 document.getElementById("savePNG").onclick = function (e) {
